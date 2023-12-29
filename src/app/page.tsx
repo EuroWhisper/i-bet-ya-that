@@ -1,9 +1,7 @@
 import { getPredictionSuggestion } from '@/lib/chatgpt';
 import { HomeContent } from '../modules/home/HomeContent';
 
-type PredictionSuggestion = {
-  message: string | null;
-};
+export const dynamic = 'force-dynamic';
 
 const getData = async () => {
   try {
