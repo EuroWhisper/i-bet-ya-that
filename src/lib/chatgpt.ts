@@ -9,7 +9,7 @@ const getPredictionSuggestion = async () => {
         {
           role: 'system',
           content:
-            'Come up with a creative, one sentence long prediction for something that could happen in the future. This will be used as placeholder text in an HTML input element, so no extra fluff in your reply. E.G: "New Zealand will win the next rugby world cup',
+            'Come up with a creative, one sentence long prediction for something that could happen in the future (avoid the space travel topic). This will be used as placeholder text in an HTML input element, so no extra fluff in your reply. E.G: "New Zealand will win the next rugby world cup',
         },
       ],
       model: 'gpt-3.5-turbo',
