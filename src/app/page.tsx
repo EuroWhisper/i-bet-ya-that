@@ -4,7 +4,7 @@ type PredictionSuggestion = {
   message: string | null;
 };
 
-export const getData = async () => {
+const getData = async () => {
   try {
     const res = await fetch('http://localhost:3000/api/prediction-suggestion', {
       method: 'GET',
