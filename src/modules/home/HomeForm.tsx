@@ -3,8 +3,13 @@
 import { InputField } from '../../components/form/InputField';
 import { Form, useForm } from '../../components/form/Form';
 import { HomeFormData } from './types';
+import { Button } from '../../components/Button';
 
-const HomeForm = () => {
+type Props = {
+  predictionSuggestion: string;
+};
+
+const HomeForm = ({ predictionSuggestion }: Props) => {
   const formMethods = useForm<HomeFormData>({
     defaultValues: { prediction: '' },
   });
@@ -12,17 +17,17 @@ const HomeForm = () => {
   return (
     <Form
       formMethods={formMethods}
-      onSubmit={(data) => {
-        console.log(data);
+      onSubmit={async (data) => {
+        console.log('Hi');
       }}
     >
       <InputField
         type="text"
         name="prediction"
-        placeholder="New Zealand will win the next rugby world cup"
+        placeholder={predictionSuggestion}
         rules={{ required: 'Prediction is required' }}
       />
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </Form>
   );
 };
