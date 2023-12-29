@@ -1,3 +1,4 @@
+import { getPredictionSuggestion } from '@/lib/chatgpt';
 import { HomeContent } from '../modules/home/HomeContent';
 
 type PredictionSuggestion = {
@@ -6,25 +7,20 @@ type PredictionSuggestion = {
 
 const getData = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/prediction-suggestion', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      cache: 'no-cache',
-    });
-    const predictionSuggestion: PredictionSuggestion = await res.json();
+    const suggestion = await getPredictionSuggestion();
 
-    return { predictionSuggestion };
+    return suggestion.content;
   } catch (e) {
-    return { predictionSuggestion: { message: null } };
+    return null;
   }
 };
 
 export default async function Home() {
-  const { predictionSuggestion } = await getData();
+  const predictionSuggestion = await getData();
 
   return (
     <HomeContent
-      predictionSuggestion={predictionSuggestion.message ?? 'dsdfsd'}
+      predictionSuggestion={predictionSuggestion ?? 'Enter a prediction...'}
     />
   );
 }
