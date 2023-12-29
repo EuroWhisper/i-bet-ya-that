@@ -1,10 +1,16 @@
-const Input = (props: React.HTMLProps<HTMLInputElement>) => {
-  return (
-    <input
-      className="bg-white text-gray-800 p-3 rounded-lg w-full"
-      {...props}
-    />
-  );
-};
+import { forwardRef } from 'react';
+
+// eslint-disable-next-line react/display-name
+const Input = forwardRef<HTMLInputElement, React.HTMLProps<HTMLInputElement>>(
+  (props, ref) => {
+    return (
+      <input
+        className="bg-white text-gray-800 p-3 rounded-lg w-full"
+        {...props}
+        ref={ref}
+      />
+    );
+  }
+);
 
 export { Input };

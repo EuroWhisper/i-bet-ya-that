@@ -13,6 +13,7 @@ const HomeContent = ({ predictionSuggestion }: Props) => {
         src="/mascot.svg"
         width={320}
         height={320}
+        priority
       />
       <h1 className="font-fugaz text-6xl mt-4">I bet ya that...</h1>
       <div className="mt-8 w-[32rem]">
