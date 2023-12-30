@@ -4,6 +4,7 @@ import { InputField } from '../../components/form/InputField';
 import { Form, useForm } from '../../components/form/Form';
 import { HomeFormData } from './types';
 import { Button } from '../../components/Button';
+import { useEffect, useState } from 'react';
 
 type Props = {
   predictionSuggestion: string;
@@ -20,7 +21,13 @@ const HomeForm = ({ predictionSuggestion }: Props) => {
     defaultValues,
   });
 
-  const shouldShowFullForm = formMethods.formState.isDirty;
+  const [shouldShowFullForm, setShouldShowFullForm] = useState(false);
+
+  useEffect(() => {
+    if (formMethods.formState.isDirty) {
+      setShouldShowFullForm(true);
+    }
+  }, [formMethods.formState.isDirty, setShouldShowFullForm]);
 
   return (
     <Form
