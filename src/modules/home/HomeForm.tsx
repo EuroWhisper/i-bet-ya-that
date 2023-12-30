@@ -9,16 +9,24 @@ type Props = {
   predictionSuggestion: string;
 };
 
+const defaultValues: HomeFormData = {
+  prediction: '',
+  confirmationDate: '',
+  email: '',
+};
+
 const HomeForm = ({ predictionSuggestion }: Props) => {
   const formMethods = useForm<HomeFormData>({
-    defaultValues: { prediction: '' },
+    defaultValues,
   });
+
+  const shouldShowFullForm = formMethods.formState.isDirty;
 
   return (
     <Form
       formMethods={formMethods}
       onSubmit={async (data) => {
-        console.log('Hi');
+        console.log(data);
       }}
     >
       <InputField
@@ -27,7 +35,28 @@ const HomeForm = ({ predictionSuggestion }: Props) => {
         placeholder={predictionSuggestion}
         rules={{ required: 'Prediction is required' }}
       />
-      <Button type="submit">Submit</Button>
+      {shouldShowFullForm && (
+        <div>
+          <div className="mt-3 flex justify-between items-end">
+            <InputField
+              label="Verify on"
+              type="date"
+              name="confirmationDate"
+              placeholder="Date"
+              rules={{ required: 'Date is required' }}
+            />
+            <InputField
+              type="email"
+              name="email"
+              placeholder="Email"
+              rules={{ required: 'Email is required' }}
+            />
+          </div>
+          <div className="mt-4">
+            <Button type="submit">Make prediction</Button>
+          </div>
+        </div>
+      )}
     </Form>
   );
 };

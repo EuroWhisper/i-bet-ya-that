@@ -14,10 +14,11 @@ const InputField = forwardRef<HTMLInputElement, Props>(
     const { field, fieldState } = useController({ name, rules });
 
     return (
-      <>
+      <div>
+        {props.label && <label htmlFor={name}>{props.label}</label>}
         <Input {...props} {...field} ref={ref} />
         {fieldState.error && <p>{fieldState.error?.message}</p>}
-      </>
+      </div>
     );
   }
 );
