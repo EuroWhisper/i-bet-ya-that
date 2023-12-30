@@ -29,6 +29,10 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## Email sending
+
+The idea right now is to use Amazon SES to send emails. You need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to your AWS credentials in order to use the app.
+
 ## OpenAI API key
 
 You need to set the `OPENAI_API_KEY` environment variable to your OpenAI API key in order to use the app.
