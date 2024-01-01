@@ -33,7 +33,14 @@ const HomeForm = ({ predictionSuggestion }: Props) => {
     <Form
       formMethods={formMethods}
       onSubmit={async (data) => {
-        console.log(data);
+        await fetch('/api/prediction', {
+          method: 'POST',
+          body: JSON.stringify({
+            prediction: data.prediction,
+            reminderDate: new Date(data.confirmationDate),
+            email: data.email,
+          }),
+        });
       }}
     >
       <InputField
