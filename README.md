@@ -33,6 +33,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The idea right now is to use Amazon SES to send emails. You need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to your AWS credentials in order to use the app.
 
+## Prisma ORM
+
+This project uses [Prisma](https://www.prisma.io/) as an ORM. You need to run `npx prisma generate` to generate the Prisma client and add the `DATABASE_URL` environment variable to your database URL in order to use the app. E.G.:
+`DATABASE_URL=postgresql://postgres:xxxxxxxxxx@db.xxxxxxxxxx.xxxxxxxxx.co:5432/postgres`
+
 ## OpenAI API key
 
 You need to set the `OPENAI_API_KEY` environment variable to your OpenAI API key in order to use the app.
