@@ -5,6 +5,7 @@ import { Form, useForm } from '../../components/form/Form';
 import { HomeFormData } from './types';
 import { Button } from '../../components/Button';
 import { useEffect, useState } from 'react';
+import { Toast } from '@/components/Toast';
 
 type Props = {
   predictionSuggestion: string;
@@ -17,6 +18,8 @@ const defaultValues: HomeFormData = {
 };
 
 const HomeForm = ({ predictionSuggestion }: Props) => {
+  const [open, setOpen] = useState(false);
+
   const formMethods = useForm<HomeFormData>({
     defaultValues,
   });
@@ -41,6 +44,7 @@ const HomeForm = ({ predictionSuggestion }: Props) => {
             email: data.email,
           }),
         });
+        setOpen(true);
       }}
     >
       <InputField
@@ -71,6 +75,9 @@ const HomeForm = ({ predictionSuggestion }: Props) => {
           </div>
         </div>
       )}
+      <Toast open={open} onOpenChange={setOpen}>
+        <h2>Saved successfully!</h2>
+      </Toast>
     </Form>
   );
 };
